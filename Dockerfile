@@ -37,7 +37,7 @@ RUN apk update \
  && apk upgrade \
  && apk add --no-cache \
         ca-certificates \
-        fuse nfs-utils openssh \
+        openssh \
  && update-ca-certificates \
  && rm -rf /var/cache/apk/*
 

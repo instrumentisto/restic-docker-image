@@ -3,6 +3,10 @@
 # Images and description on Docker Hub will be automatically rebuilt on
 # pushes to `master` branch of this repo and on updates of parent image.
 #
+# Note! Docker Hub `post_push` hook must be always up-to-date with default
+# values of current Makefile. To update it just use:
+#	make post-push-hook
+#
 # It's still possible to build, tag and push images manually. Just use:
 #	make release
 
@@ -65,4 +69,55 @@ release: | image tags push
 
 
 
-.PHONY: image tags push release
+# Create `post_push` Docker Hub hook.
+#
+# When Docker Hub triggers automated build all the tags defined in `post_push`
+# hook will be assigned to built image. It allows to link the same image with
+# different tags, and not to build identical image for each tag separately.
+# See details:
+# http://windsock.io/automated-docker-image-builds-with-multiple-tags
+#
+# Usage:
+#	make post-push-hook [TAGS=t1,t2,...]
+
+post-push-hook:
+	mkdir -p $(PWD)/hooks
+	docker run --rm -i -v $(PWD)/post_push.erb:/post_push.erb:ro \
+		ruby:alpine erb -U \
+			image_tags='$(TAGS)' \
+		/post_push.erb > $(PWD)/hooks/post_push
+
+
+
+# Run tests for Docker image.
+#
+# Usage:
+#	make test [VERSION=]
+
+test: deps.bats
+	IMAGE=$(IMAGE_NAME):$(VERSION) ./test/bats/bats test/suite.bats
+
+
+
+# Resolve project dependencies for running tests.
+#
+# Usage:
+#	make deps.bats [BATS_VER=]
+
+BATS_VER ?= 0.4.0
+
+deps.bats:
+ifeq ($(wildcard $(PWD)/test/bats),)
+	mkdir -p $(PWD)/test/bats/vendor
+	curl -L -o $(PWD)/test/bats/vendor/bats.tar.gz \
+		https://github.com/sstephenson/bats/archive/v$(BATS_VER).tar.gz
+	tar -xzf $(PWD)/test/bats/vendor/bats.tar.gz \
+		-C $(PWD)/test/bats/vendor
+	rm -f $(PWD)/test/bats/vendor/bats.tar.gz
+	ln -s $(PWD)/test/bats/vendor/bats-$(BATS_VER)/libexec/* \
+		$(PWD)/test/bats/
+endif
+
+
+
+.PHONY: image tags push release post-push-hook test deps.bats
