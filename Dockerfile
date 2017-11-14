@@ -5,19 +5,19 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.9-alpine AS dist
 
-# Download and compile restic.
-RUN apk add --update \
-        curl \
-    \
- && curl -fL -o /tmp/restic.tar.gz \
+
+RUN apk add --update curl
+
+# Download restic.
+RUN curl -fL -o /tmp/restic.tar.gz \
              https://github.com/restic/restic/releases/download/v0.7.3/restic-0.7.3.tar.gz \
- && tar -xzf /tmp/restic.tar.gz -C /tmp \
+ && tar -xzf /tmp/restic.tar.gz -C /tmp
+
+# Build restic.
+RUN mkdir -p /out \
  && cd /tmp/restic-* \
-    \
  && go run build.go \
-    \
- && mkdir -p /out \
- && cp restic /out/
+ && cp restic LICENSE /out/
 
 
 
@@ -32,7 +32,7 @@ FROM alpine:3.6 AS runtime
 MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
 
 
-# Install restic runtime dependencies.
+# Install restic runtime dependencies and upgrade existing packages.
 RUN apk update \
  && apk upgrade \
  && apk add --no-cache \
@@ -43,6 +43,7 @@ RUN apk update \
 
 # Install restic.
 COPY --from=dist /out/restic /usr/local/bin/
+COPY --from=dist /out/LICENSE /usr/share/licenses/restic/
 
 # Prepare default restic env vars.
 ENV RESTIC_REPOSITORY=/mnt/repo \
