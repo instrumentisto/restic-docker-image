@@ -77,7 +77,7 @@ Concrete `X.Y.Z` version of restic.
 
 restic itself is licensed under [BSD 2-Clause license][91].
 
-And restic Docker image is licensed under [MIT license][92] too.
+restic Docker image is licensed under [MIT license][92].
 
 
 
