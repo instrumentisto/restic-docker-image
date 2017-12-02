@@ -27,7 +27,7 @@ RUN mkdir -p /out \
 #
 
 # https://hub.docker.com/_/alpine
-FROM alpine:3.6 AS runtime
+FROM alpine:3.7 AS runtime
 
 MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
 
