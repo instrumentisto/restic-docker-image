@@ -38,3 +38,14 @@
   run docker run --rm $IMAGE --help
   [ "$status" -eq 0 ]
 }
+
+@test "restic has correct version" {
+  run sh -c 'cat Makefile | grep "VERSION ?= " | cut -d " " -f 3 | tr -d "\n"'
+  [ "$status" -eq 0 ]
+  [ ! "$output" = '' ]
+  expected="$output"
+
+  run docker run --rm --entrypoint sh $IMAGE -c \
+    "restic version | grep -Fx 'restic $expected'"
+  [ "$status" -eq 0 ]
+}
