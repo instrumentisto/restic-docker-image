@@ -82,10 +82,10 @@ release: | image tags push
 
 post-push-hook:
 	mkdir -p $(PWD)/hooks
-	docker run --rm -i -v $(PWD)/post_push.erb:/post_push.erb:ro \
-		ruby:alpine erb -U \
-			image_tags='$(TAGS)' \
-		/post_push.erb > $(PWD)/hooks/post_push
+	docker run --rm -v $(PWD)/post_push.tmpl:/post_push.tmpl:ro \
+	           -e TAGS='$(TAGS)' \
+		hairyhenderson/gomplate:slim -f /post_push.tmpl \
+		> $(PWD)/hooks/post_push
 
 
 
