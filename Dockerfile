@@ -10,7 +10,7 @@ RUN apk add --update curl
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
-             https://github.com/restic/restic/releases/download/v0.8.2/restic-0.8.2.tar.gz \
+             https://github.com/restic/restic/releases/download/v0.8.3/restic-0.8.3.tar.gz \
  && tar -xzf /tmp/restic.tar.gz -C /tmp
 
 # Build restic.
