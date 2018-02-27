@@ -18,6 +18,17 @@
 }
 
 
+@test "fuse is installed" {
+  run docker run --rm --entrypoint sh $IMAGE -c 'which fusermount'
+  [ "$status" -eq 0 ]
+}
+
+@test "fuse runs ok" {
+  run docker run --rm --entrypoint sh $IMAGE -c 'fusermount -V'
+  [ "$status" -eq 0 ]
+}
+
+
 @test "SSH is installed" {
   run docker run --rm --entrypoint sh $IMAGE -c 'which ssh'
   [ "$status" -eq 0 ]
