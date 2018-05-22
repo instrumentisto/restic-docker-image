@@ -6,16 +6,10 @@
 FROM golang:1.9-alpine AS dist
 
 
-RUN apk add --update curl
+RUN apk add --update curl git
 
-# Download rclone.
-RUN curl -fL -o /tmp/rclone.zip https://downloads.rclone.org/rclone-current-linux-amd64.zip \
- && apk add unzip --update \
- && unzip  /tmp/rclone.zip -d /tmp
-
-RUN cd /tmp/rclone-* \
- && chown root:root rclone \
- && chmod 755 rclone
+# Download and build rclone.
+RUN go get -u -v github.com/ncw/rclone
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
@@ -56,7 +50,7 @@ COPY --from=dist /out/restic /usr/local/bin/
 COPY --from=dist /out/LICENSE /usr/share/licenses/restic/
 
 # Install rclone.
-COPY --from=dist /tmp/rclone-*/rclone /usr/local/bin
+COPY --from=dist /go/bin/rclone /usr/local/bin
 
 # Prepare default restic env vars.
 ENV RESTIC_REPOSITORY=/mnt/repo \
