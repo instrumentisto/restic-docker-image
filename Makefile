@@ -12,8 +12,8 @@
 
 
 IMAGE_NAME := instrumentisto/restic
-VERSION ?= 0.8.3
-TAGS ?= 0.8.3,0.8,latest
+VERSION ?= 0.9.0
+TAGS ?= 0.9.0,0.9,latest
 
 
 comma := ,
