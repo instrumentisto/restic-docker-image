@@ -53,6 +53,7 @@ COPY --from=dist /out/LICENSE /usr/share/licenses/restic/
 
 # Install rclone.
 COPY --from=dist /go/bin/rclone.v1 /usr/local/bin/
+COPY --from=dist $GOPATH/go/src/gopkg.in/ncw/rclone.v1/COPYING /usr/share/licenses/rclone/
 
 RUN mv /usr/local/bin/rclone.v1 /usr/local/bin/rclone
 
