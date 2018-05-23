@@ -45,6 +45,11 @@
   [ "$status" -eq 0 ]
 }
 
+@test "rclone runs ok" {
+  run docker run --rm --entrypoint sh $IMAGE -c 'rclone --help'
+  [ "$status" -eq 0 ]
+}
+
 
 @test "restic is installed" {
   run docker run --rm --entrypoint sh $IMAGE -c 'which restic'
