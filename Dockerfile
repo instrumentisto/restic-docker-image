@@ -9,9 +9,8 @@ FROM golang:1.9-alpine AS dist
 RUN apk add --update curl git
 
 # Download and build rclone.
-RUN go get -u -v gopkg.in/ncw/rclone.v1
-
-RUN ls -l /go/bin
+RUN go get -u -v gopkg.in/ncw/rclone.v1 \
+ && mv /go/bin/rclone.v1 /go/bin/rclone
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
@@ -47,15 +46,12 @@ RUN apk update \
  && update-ca-certificates \
  && rm -rf /var/cache/apk/*
 
-# Install restic.
-COPY --from=dist /out/restic /usr/local/bin/
+# Install restic and rclone.
+COPY --from=dist /out/restic /usr/local/bin/ \
+     /go/bin/rclone /usr/local/bin/
+
 COPY --from=dist /out/LICENSE /usr/share/licenses/restic/
-
-# Install rclone.
-COPY --from=dist /go/bin/rclone.v1 /usr/local/bin/
-COPY --from=dist $GOPATH/go/src/gopkg.in/ncw/rclone.v1/COPYING /usr/share/licenses/rclone/
-
-RUN mv /usr/local/bin/rclone.v1 /usr/local/bin/rclone
+COPY --from=dist /go/src/gopkg.in/ncw/rclone.v1/COPYING /usr/share/licenses/rclone/
 
 # Prepare default restic env vars.
 ENV RESTIC_REPOSITORY=/mnt/repo \
