@@ -40,6 +40,17 @@
 }
 
 
+@test "rclone is installed" {
+  run docker run --rm --entrypoint sh $IMAGE -c 'which rclone'
+  [ "$status" -eq 0 ]
+}
+
+@test "rclone runs ok" {
+  run docker run --rm --entrypoint sh $IMAGE -c 'rclone --help'
+  [ "$status" -eq 0 ]
+}
+
+
 @test "restic is installed" {
   run docker run --rm --entrypoint sh $IMAGE -c 'which restic'
   [ "$status" -eq 0 ]
@@ -57,6 +68,6 @@
   expected="$output"
 
   run docker run --rm --entrypoint sh $IMAGE -c \
-    "restic version | grep -Fx 'restic $expected'"
+    "restic version | grep -i 'restic $expected'"
   [ "$status" -eq 0 ]
 }
