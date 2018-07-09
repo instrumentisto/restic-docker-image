@@ -3,7 +3,7 @@
 #
 
 # https://hub.docker.com/_/golang
-FROM golang:1.9-alpine AS dist
+FROM golang:1.10-alpine AS dist
 
 
 # Install build tools.
