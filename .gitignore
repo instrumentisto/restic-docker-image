@@ -1,3 +1,7 @@
-/.idea
+/.idea/
+*.iml
+.DS_Store
 
-/test/bats
+/node_modules/
+/yarn.lock
+/yarn-error.log

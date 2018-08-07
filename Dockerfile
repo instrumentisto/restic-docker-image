@@ -3,7 +3,7 @@
 #
 
 # https://hub.docker.com/_/golang
-FROM golang:1.9-alpine AS dist
+FROM golang:1.10-alpine AS dist
 
 
 # Install build tools.
@@ -38,7 +38,7 @@ RUN cd /tmp/restic-* \
 #
 
 # https://hub.docker.com/_/alpine
-FROM alpine:3.7 AS runtime
+FROM alpine:3.8 AS runtime
 
 MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
 
