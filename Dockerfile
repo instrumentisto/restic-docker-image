@@ -3,7 +3,7 @@
 #
 
 # https://hub.docker.com/_/golang
-FROM golang:1.10-alpine AS dist
+FROM golang:1.11-alpine AS dist
 
 
 # Install build tools.
@@ -21,7 +21,7 @@ RUN go get -u -v gopkg.in/ncw/rclone.v1 \
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
-         https://github.com/restic/restic/releases/download/v0.9.2/restic-0.9.2.tar.gz \
+         https://github.com/restic/restic/releases/download/v0.9.3/restic-0.9.3.tar.gz \
  && tar -xzf /tmp/restic.tar.gz -C /tmp
 
 # Build restic.
