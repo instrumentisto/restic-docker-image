@@ -21,7 +21,7 @@ RUN go get -u -v gopkg.in/ncw/rclone.v1 \
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
-         https://github.com/restic/restic/releases/download/v0.9.3/restic-0.9.3.tar.gz \
+         https://github.com/restic/restic/releases/download/v0.9.4/restic-0.9.4.tar.gz \
  && tar -xzf /tmp/restic.tar.gz -C /tmp
 
 # Build restic.
