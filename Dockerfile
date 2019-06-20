@@ -38,7 +38,7 @@ RUN cd /tmp/restic-* \
 #
 
 # https://hub.docker.com/_/alpine
-FROM alpine:3.9 AS runtime
+FROM alpine:3.10 AS runtime
 
 MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
 
