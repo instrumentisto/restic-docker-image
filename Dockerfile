@@ -3,11 +3,14 @@
 #
 
 # https://hub.docker.com/_/golang
-FROM golang:1.11-alpine AS dist
+FROM golang:1.13-alpine AS dist
+
+ARG restic_ver=0.9.6
 
 
 # Install build tools.
-RUN apk add --update --no-cache curl git
+RUN apk add --update --no-cache \
+        build-base curl git
 
 # Prepare dirs for export.
 RUN mkdir -p /out/usr/local/bin/ \
@@ -21,7 +24,7 @@ RUN go get -u -v gopkg.in/ncw/rclone.v1 \
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
-         https://github.com/restic/restic/releases/download/v0.9.5/restic-0.9.5.tar.gz \
+         https://github.com/restic/restic/releases/download/v${restic_ver}/restic-${restic_ver}.tar.gz \
  && tar -xzf /tmp/restic.tar.gz -C /tmp
 
 # Build restic.
@@ -39,8 +42,6 @@ RUN cd /tmp/restic-* \
 
 # https://hub.docker.com/_/alpine
 FROM alpine:3.10 AS runtime
-
-MAINTAINER Instrumentisto Team <developer@instrumentisto.com>
 
 
 # Install restic runtime dependencies and upgrade existing packages.

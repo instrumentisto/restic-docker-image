@@ -2,7 +2,9 @@
 
 
 @test "post_push hook is up-to-date" {
-  run sh -c "cat Makefile | grep 'TAGS ?= ' | cut -d ' ' -f 3"
+  run sh -c "make post-push-hook out=/dev/stdout | grep 'for tag in' \
+                                                 | cut -d '{' -f 2 \
+                                                 | cut -d '}' -f 1"
   [ "$status" -eq 0 ]
   [ ! "$output" = '' ]
   expected="$output"
@@ -62,7 +64,7 @@
 }
 
 @test "restic has correct version" {
-  run sh -c 'cat Makefile | grep "VERSION ?= " | cut -d " " -f 3 | tr -d "\n"'
+  run sh -c 'grep "ARG restic_ver=" Dockerfile | cut -d= -f2 | tr -d "\n"'
   [ "$status" -eq 0 ]
   [ ! "$output" = '' ]
   expected="$output"

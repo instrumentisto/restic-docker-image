@@ -1,8 +1,4 @@
 language: bash
-addons:
-  apt:
-    packages:
-      - docker-ce
 
 sudo: false
 
@@ -10,11 +6,12 @@ services:
   - docker
 
 before_script:
-  - make image no-cache=yes VERSION=test
+  - make image no-cache=yes tag=test
   - make deps.bats
+  - docker pull hairyhenderson/gomplate:slim
 
 script:
-  - make test VERSION=test
+  - make test tag=test
 
 notifications:
   email:
