@@ -25,7 +25,6 @@ restic supports the following backends for storing backups natively:
 - [Microsoft Azure Blob Storage](https://restic.readthedocs.io/en/latest/manual.html#microsoft-azure-blob-storage)
 - [Google Cloud Storage](https://restic.readthedocs.io/en/latest/manual.html#google-cloud-storage)
 
-
 > [restic.readthedocs.io](https://restic.readthedocs.io/en/latest)
 
 ![restic Logo](http://restic.readthedocs.io/en/latest/_static/logo.png)
@@ -75,9 +74,13 @@ Concrete `X.Y.Z` version of restic.
 
 ## License
 
-restic itself is licensed under [BSD 2-Clause license][91].
+restic is licensed under [BSD 2-Clause license][93].
 
-restic Docker image is licensed under [MIT license][92].
+As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
+
+As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
+
+The [sources][92] for producing `instrumentisto/restic` Docker images are licensed under [Blue Oak Model License 1.0.0][91].
 
 
 
@@ -86,12 +89,13 @@ restic Docker image is licensed under [MIT license][92].
 
 We can't notice comments in the DockerHub, so don't use them for reporting issue or asking question.
 
-If you have any problems with or questions about this image, please contact us through a [GitHub issue][10].
+If you have any problems with or questions about this image, please contact us through a [GitHub issue][90].
 
 
 
 
 
-[10]: https://github.com/instrumentisto/restic-docker-image/issues
-[91]: https://github.com/restic/restic/blob/master/LICENSE
-[92]: https://github.com/instrumentisto/restic-docker-image/blob/master/LICENSE.md
+[90]: https://github.com/instrumentisto/restic-docker-image/issues
+[91]: https://github.com/instrumentisto/restic-docker-image/blob/master/LICENSE.md
+[92]: https://github.com/instrumentisto/restic-docker-image
+[93]: https://github.com/restic/restic/blob/master/LICENSE
