@@ -41,7 +41,7 @@ RUN cd /tmp/restic-* \
 #
 
 # https://hub.docker.com/_/alpine
-FROM alpine:3.11 AS runtime
+FROM alpine:3.12 AS runtime
 
 
 # Install restic runtime dependencies and upgrade existing packages.
