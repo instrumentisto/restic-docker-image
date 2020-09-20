@@ -20,7 +20,7 @@ RESTIC_VER ?= $(strip \
 
 IMAGE_NAME := instrumentisto/restic
 TAGS ?= $(RESTIC_VER) \
-        0.9 \
+        0.10 \
         latest
 VERSION ?= $(word 1,$(subst $(comma), ,$(TAGS)))
 
