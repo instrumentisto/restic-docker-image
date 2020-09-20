@@ -18,9 +18,10 @@ RUN mkdir -p /out/usr/local/bin/ \
              /out/usr/share/licenses/rclone/
 
 # Download and build rclone.
-RUN go get -u -v gopkg.in/ncw/rclone.v1 \
- && cp /go/bin/rclone.v1 /out/usr/local/bin/rclone \
- && cp /go/src/gopkg.in/ncw/rclone.v1/COPYING /out/usr/share/licenses/rclone/
+RUN GO111MODULE=on go get -v github.com/rclone/rclone \
+ && cp /go/bin/rclone /out/usr/local/bin/rclone \
+ && curl -fL -o /out/usr/share/licenses/rclone/COPYING \
+         https://raw.githubusercontent.com/rclone/rclone/master/COPYING
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
