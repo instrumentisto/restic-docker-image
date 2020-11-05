@@ -5,7 +5,7 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.15-alpine AS dist
 
-ARG restic_ver=0.10.0
+ARG restic_ver=0.11.0
 
 
 # Install build tools.
