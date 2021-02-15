@@ -1,7 +1,22 @@
 restic Docker Image
 ===================
 
-[![GitHub release](https://img.shields.io/github/release/instrumentisto/restic-docker-image.svg)](https://hub.docker.com/r/instrumentisto/restic/tags) [![Build Status](https://travis-ci.org/instrumentisto/restic-docker-image.svg?branch=master)](https://travis-ci.org/instrumentisto/restic-docker-image) [![Docker Pulls](https://img.shields.io/docker/pulls/instrumentisto/restic.svg)](https://hub.docker.com/r/instrumentisto/restic)
+[![Release](https://img.shields.io/github/v/release/instrumentisto/restic-docker-image "Release")](https://github.com/instrumentisto/restic-docker-image/releases)
+[![CI](https://github.com/instrumentisto/restic-docker-image/workflows/CI/badge.svg?branch=master "CI")](https://github.com/instrumentisto/restic-docker-image/actions?query=workflow%3ACI+branch%3Amaster)
+[![Docker Hub](https://img.shields.io/docker/pulls/instrumentisto/restic?label=Docker%20Hub%20pulls "Docker Hub pulls")](https://hub.docker.com/r/instrumentisto/restic)
+
+[Docker Hub](https://hub.docker.com/r/instrumentisto/restic)
+| [GitHub Container Registry](https://github.com/orgs/instrumentisto/packages/container/package/restic)
+| [Quay.io](https://quay.io/repository/instrumentisto/restic)
+
+[Changelog](https://github.com/instrumentisto/restic-docker-image/blob/master/CHANGELOG.md)
+
+
+
+
+## Supported tags and respective `Dockerfile` links
+
+- [`0.12.0-r0`, `0.12.0`, `0.12`, `latest`][201]
 
 
 
@@ -24,6 +39,9 @@ restic supports the following backends for storing backups natively:
 - [BackBlaze B2](https://restic.readthedocs.io/en/latest/manual.html#backblaze-b2)
 - [Microsoft Azure Blob Storage](https://restic.readthedocs.io/en/latest/manual.html#microsoft-azure-blob-storage)
 - [Google Cloud Storage](https://restic.readthedocs.io/en/latest/manual.html#google-cloud-storage)
+- And many other services via the [rclone](https://rclone.org) [Backend](https://restic.readthedocs.io/en/latest/030_preparing_a_new_repo.html#other-services-via-rclone)
+
+> [restic.net](https://restic.net)
 
 > [restic.readthedocs.io](https://restic.readthedocs.io/en/latest)
 
@@ -49,25 +67,31 @@ docker run --rm -v $(pwd):/data \
 
 ## Image versions
 
+This image is based on the popular [Alpine Linux project][1], available in [the alpine official image][2]. Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
-### `latest`
-
-Latest version of restic.
+This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc][4] instead of [glibc and friends][5], so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread][6] for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
 
 
 ### `X`
 
-Latest version of restic `X` branch.
+Latest tag of `X` restic's major version.
 
 
 ### `X.Y`
 
-Latest version of restic `X.Y` branch.
+Latest tag of `X.Y` restic's minor version.
 
 
 ### `X.Y.Z`
 
-Concrete `X.Y.Z` version of restic.
+Latest tag of a concrete `X.Y.Z` version of restic.
+
+
+### `X.Y.Z-rN`
+
+Concrete `N` image revision tag of a restic's concrete `X.Y.Z` version.
+
+Once build, it's never updated.
 
 
 
@@ -87,7 +111,7 @@ The [sources][92] for producing `instrumentisto/restic` Docker images are licens
 
 ## Issues
 
-We can't notice comments in the DockerHub, so don't use them for reporting issue or asking question.
+We can't notice comments in the [DockerHub] (or other container registries) so don't use them for reporting issue or asking question.
 
 If you have any problems with or questions about this image, please contact us through a [GitHub issue][90].
 
@@ -95,7 +119,17 @@ If you have any problems with or questions about this image, please contact us t
 
 
 
+[DockerHub]: https://hub.docker.com
+
+[1]: http://alpinelinux.org
+[2]: https://hub.docker.com/_/alpine
+[4]: http://www.musl-libc.org
+[5]: http://www.etalabs.net/compare_libcs.html
+[6]: https://news.ycombinator.com/item?id=10782897
+
 [90]: https://github.com/instrumentisto/restic-docker-image/issues
 [91]: https://github.com/instrumentisto/restic-docker-image/blob/master/LICENSE.md
 [92]: https://github.com/instrumentisto/restic-docker-image
 [93]: https://github.com/restic/restic/blob/master/LICENSE
+
+[201]: https://github.com/instrumentisto/restic-docker-image/blob/master/Dockerfile
