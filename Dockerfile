@@ -3,10 +3,10 @@
 #
 
 # https://hub.docker.com/_/golang
-FROM golang:1.15-alpine AS dist
+FROM golang:1.15-alpine3.13 AS dist
 
 ARG restic_ver=0.12.0
-ARG build_rev=2
+ARG build_rev=3
 
 
 # Install build tools.
@@ -43,7 +43,7 @@ RUN cd /tmp/restic-* \
 #
 
 # https://hub.docker.com/_/alpine
-FROM alpine:3.13.3 AS runtime
+FROM alpine:3.13.4 AS runtime
 
 LABEL org.opencontainers.image.source="\
     https://github.com/instrumentisto/restic-docker-image"
