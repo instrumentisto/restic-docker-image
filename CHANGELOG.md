@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.12.0-r5] · 2021-06-28
+[0.12.0-r5]: /../../tree/0.12.0-r5
+
+[Diff](/../../compare/0.12.0-r4...0.12.0-r5)
+
+### Upgraded
+
+- [Alpine Linux] 3.14: <https://www.alpinelinux.org/posts/Alpine-3.14.0-released.html>
+
+
+
+
 ## [0.12.0-r4] · 2021-04-15
 [0.12.0-r4]: /../../tree/0.12.0-r4
 
