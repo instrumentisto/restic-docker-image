@@ -15,14 +15,7 @@ RUN apk add --update --no-cache \
 
 # Prepare dirs for export.
 RUN mkdir -p /out/usr/local/bin/ \
-             /out/usr/share/licenses/restic/ \
-             /out/usr/share/licenses/rclone/
-
-# Download and build rclone.
-RUN GO111MODULE=on go get -v github.com/rclone/rclone \
- && cp /go/bin/rclone /out/usr/local/bin/rclone \
- && curl -fL -o /out/usr/share/licenses/rclone/COPYING \
-         https://raw.githubusercontent.com/rclone/rclone/master/COPYING
+             /out/usr/share/licenses/restic/
 
 # Download restic.
 RUN curl -fL -o /tmp/restic.tar.gz \
@@ -56,10 +49,11 @@ RUN apk update \
         ca-certificates \
         fuse \
         openssh \
+        rclone \
  && update-ca-certificates \
  && rm -rf /var/cache/apk/*
 
-# Install restic and rclone.
+# Install restic.
 COPY --from=dist /out/ /
 
 # Prepare default restic env vars.
