@@ -62,8 +62,22 @@ docker run --rm -v $(pwd):/data \
     instrumentisto/restic backup /data
 ```
 
+### Usage with rclone
 
+First generate an rclone config file:
+```bash
+docker run -it --rm -v rclone-config:/config/rclone rclone/rclone config
+```
 
+Then attach it to the volume
+```bash
+docker run --rm \
+           -v $(pwd):/data \
+           -v rclone-config:/root/.config/rclone \
+           -e RESTIC_REPOSITORY=rclone:rclone-respository-name:folder-path \
+           -e RESTIC_PASSWORD=my-secure-password \
+       instrumentisto/restic backup /data
+```
 
 ## Image versions
 
