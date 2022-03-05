@@ -52,6 +52,10 @@ restic supports the following backends for storing backups natively:
 
 ## How to use this image
 
+restic  snapshots are tied to the hostname of your devices that is backed up. In case of using docker the host name is generate randomly every time you start the backup.
+Therefore it is important to use the `--host myHost` parameter. Otherwise Backups take much longer because the repository is scanned completely.
+
+
 Mount your data, specify your credentials, and provide the `restic` command you require:
 ```bash
 docker run --rm -v $(pwd):/data \
@@ -59,7 +63,7 @@ docker run --rm -v $(pwd):/data \
            -e RESTIC_PASSWORD=my-secure-password \
            -e AWS_ACCESS_KEY_ID=my-aws-access-key \
            -e AWS_SECRET_ACCESS_KEY=my-aws-secret-key \
-    instrumentisto/restic backup /data
+    instrumentisto/restic backup --host myHost /data
 ```
 
 
@@ -76,7 +80,7 @@ docker run --rm -v $(pwd):/data \
            -v rclone-config:/root/.config/rclone \
            -e RESTIC_REPOSITORY=rclone:rclone-respository-name:folder-path \
            -e RESTIC_PASSWORD=my-secure-password \
-       instrumentisto/restic backup /data
+       instrumentisto/restic backup --host myHost /data
 ```
 
 
