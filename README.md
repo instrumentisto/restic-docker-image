@@ -59,8 +59,10 @@ docker run --rm -v $(pwd):/data \
            -e RESTIC_PASSWORD=my-secure-password \
            -e AWS_ACCESS_KEY_ID=my-aws-access-key \
            -e AWS_SECRET_ACCESS_KEY=my-aws-secret-key \
-    instrumentisto/restic backup /data
+    instrumentisto/restic backup --host myHost /data
 ```
+
+> __NOTE__: restic snapshots are tied to the hostname of your devices that are backed up. In case of using Docker, the host name is generate randomly every time you start a new container. Therefore, it's important to use the `--host myHost` parameter, otherwise the backups take much longer time, because the repository is scanned completely.
 
 
 ### With `rclone`
@@ -76,7 +78,7 @@ docker run --rm -v $(pwd):/data \
            -v rclone-config:/root/.config/rclone \
            -e RESTIC_REPOSITORY=rclone:rclone-respository-name:folder-path \
            -e RESTIC_PASSWORD=my-secure-password \
-       instrumentisto/restic backup /data
+       instrumentisto/restic backup --host myHost /data
 ```
 
 
