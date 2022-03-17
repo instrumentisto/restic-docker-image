@@ -11,6 +11,10 @@ All user visible changes to this project will be documented in this file. This p
 
 [Diff](/../../compare/0.12.1-r2...0.12.1-r3)
 
+### Upgraded
+
+- [Go] 1.18: <https://go.dev/doc/go1.18>
+
 ### Security updated
 
 - [Alpine Linux] 3.15.1: <https://github.com/docker-library/official-images/commit/a17a3d23dd04c3de3c43bcc27885638b8f389390>
@@ -160,5 +164,6 @@ See [GitHub releases](/../../releases).
 
 
 [Alpine Linux]: https://www.alpinelinux.org
+[Go]: https://go.dev
 [restic]: https://restic.net
 [Semantic Versioning 2.0.0]: https://semver.org
