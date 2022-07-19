@@ -2,14 +2,14 @@ restic Docker Image
 ===================
 
 [![Release](https://img.shields.io/github/v/release/instrumentisto/restic-docker-image "Release")](https://github.com/instrumentisto/restic-docker-image/releases)
-[![CI](https://github.com/instrumentisto/restic-docker-image/workflows/CI/badge.svg?branch=master "CI")](https://github.com/instrumentisto/restic-docker-image/actions?query=workflow%3ACI+branch%3Amaster)
+[![CI](https://github.com/instrumentisto/restic-docker-image/workflows/CI/badge.svg?branch=main "CI")](https://github.com/instrumentisto/restic-docker-image/actions?query=workflow%3ACI+branch%3Amain)
 [![Docker Hub](https://img.shields.io/docker/pulls/instrumentisto/restic?label=Docker%20Hub%20pulls "Docker Hub pulls")](https://hub.docker.com/r/instrumentisto/restic)
 
 [Docker Hub](https://hub.docker.com/r/instrumentisto/restic)
 | [GitHub Container Registry](https://github.com/orgs/instrumentisto/packages/container/package/restic)
 | [Quay.io](https://quay.io/repository/instrumentisto/restic)
 
-[Changelog](https://github.com/instrumentisto/restic-docker-image/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/instrumentisto/restic-docker-image/blob/main/CHANGELOG.md)
 
 
 
@@ -147,8 +147,8 @@ If you have any problems with or questions about this image, please contact us t
 [6]: https://news.ycombinator.com/item?id=10782897
 
 [90]: https://github.com/instrumentisto/restic-docker-image/issues
-[91]: https://github.com/instrumentisto/restic-docker-image/blob/master/LICENSE.md
+[91]: https://github.com/instrumentisto/restic-docker-image/blob/main/LICENSE.md
 [92]: https://github.com/instrumentisto/restic-docker-image
 [93]: https://github.com/restic/restic/blob/master/LICENSE
 
-[201]: https://github.com/instrumentisto/restic-docker-image/blob/master/Dockerfile
+[201]: https://github.com/instrumentisto/restic-docker-image/blob/main/Dockerfile
