@@ -20,10 +20,11 @@ RESTIC_VER ?= $(strip \
 BUILD_REV ?= $(strip \
 	$(shell grep 'ARG build_rev=' Dockerfile | cut -d '=' -f2))
 
-NAMESPACES := instrumentisto \
-              ghcr.io/instrumentisto \
-              quay.io/instrumentisto
 NAME := restic
+OWNER := $(or $(GITHUB_REPOSITORY_OWNER),instrumentisto)
+REGISTRIES := $(strip $(subst $(comma), ,\
+	$(shell grep -m1 'registry: \["' .github/workflows/ci.yml \
+	        | cut -d':' -f2 | tr -d '"][')))
 TAGS ?= $(RESTIC_VER)-r$(BUILD_REV) \
         $(RESTIC_VER) \
         $(strip $(shell echo $(RESTIC_VER) | cut -d '.' -f1,2)) \
@@ -54,8 +55,8 @@ test: test.docker
 # Docker commands #
 ###################
 
-docker-namespaces = $(strip $(if $(call eq,$(namespaces),),\
-                            $(NAMESPACES),$(subst $(comma), ,$(namespaces))))
+docker-registries = $(strip $(if $(call eq,$(registries),),\
+                            $(REGISTRIES),$(subst $(comma), ,$(registries))))
 docker-tags = $(strip $(if $(call eq,$(tags),),\
                       $(TAGS),$(subst $(comma), ,$(tags))))
 
@@ -67,28 +68,36 @@ docker-tags = $(strip $(if $(call eq,$(tags),),\
 #	                  [RESTIC_VER=<restic-version>]
 #	                  [BUILD_REV=<build-revision>]
 
+github_url := $(strip $(or $(GITHUB_SERVER_URL),https://github.com))
+github_repo := $(strip $(or $(GITHUB_REPOSITORY),$(OWNER)/$(NAME)-docker-image))
+
 docker.image:
 	docker build --network=host --force-rm \
 		$(if $(call eq,$(no-cache),yes),--no-cache --pull,) \
 		--build-arg restic_ver=$(RESTIC_VER) \
 		--build-arg build_rev=$(BUILD_REV) \
-		-t instrumentisto/$(NAME):$(if $(call eq,$(tag),),$(VERSION),$(tag)) ./
+		--label org.opencontainers.image.source=$(github_url)/$(github_repo) \
+		--label org.opencontainers.image.revision=$(strip \
+			$(shell git show --pretty=format:%H --no-patch)) \
+		--label org.opencontainers.image.version=$(strip \
+			$(shell git describe --tags --dirty)) \
+		-t $(OWNER)/$(NAME):$(or $(tag),$(VERSION)) ./
 
 
 # Manually push Docker images to container registries.
 #
 # Usage:
 #	make docker.push [tags=($(TAGS)|<docker-tag-1>[,<docker-tag-2>...])]
-#	                 [namespaces=($(NAMESPACES)|<prefix-1>[,<prefix-2>...])]
+#	                 [registries=($(REGISTRIES)|<prefix-1>[,<prefix-2>...])]
 
 docker.push:
 	$(foreach tag,$(subst $(comma), ,$(docker-tags)),\
-		$(foreach namespace,$(subst $(comma), ,$(docker-namespaces)),\
-			$(call docker.push.do,$(namespace),$(tag))))
+		$(foreach registry,$(subst $(comma), ,$(docker-registries)),\
+			$(call docker.push.do,$(registry),$(tag))))
 define docker.push.do
 	$(eval repo := $(strip $(1)))
 	$(eval tag := $(strip $(2)))
-	docker push $(repo)/$(NAME):$(tag)
+	docker push $(repo)/$(OWNER)/$(NAME):$(tag)
 endef
 
 
@@ -97,23 +106,45 @@ endef
 # Usage:
 #	make docker.tags [of=($(VERSION)|<docker-tag>)]
 #	                 [tags=($(TAGS)|<docker-tag-1>[,<docker-tag-2>...])]
-#	                 [namespaces=($(NAMESPACES)|<prefix-1>[,<prefix-2>...])]
-
-docker-tags-of = $(if $(call eq,$(of),),$(VERSION),$(of))
+#	                 [registries=($(REGISTRIES)|<prefix-1>[,<prefix-2>...])]
 
 docker.tags:
 	$(foreach tag,$(subst $(comma), ,$(docker-tags)),\
-		$(foreach namespace,$(subst $(comma), ,$(docker-namespaces)),\
-			$(call docker.tags.do,$(docker-tags-of),$(namespace),$(tag))))
+		$(foreach registry,$(subst $(comma), ,$(docker-registries)),\
+			$(call docker.tags.do,$(or $(of),$(VERSION)),$(registry),$(tag))))
 define docker.tags.do
 	$(eval from := $(strip $(1)))
 	$(eval repo := $(strip $(2)))
 	$(eval to := $(strip $(3)))
-	docker tag instrumentisto/$(NAME):$(from) $(repo)/$(NAME):$(to)
+	docker tag $(OWNER)/$(NAME):$(from) $(repo)/$(OWNER)/$(NAME):$(to)
 endef
 
 
+# Save Docker images to a tarball file.
+#
+# Usage:
+#	make docker.tar [to-file=(.cache/image.tar|<file-path>)]
+#	                [tags=($(VERSION)|<docker-tag-1>[,<docker-tag-2>...])]
+
+docker-tar-file = $(or $(to-file),.cache/image.tar)
+
+docker.tar:
+	@mkdir -p $(dir $(docker-tar-file))
+	docker save -o $(docker-tar-file) \
+		$(foreach tag,$(subst $(comma), ,$(or $(tags),$(VERSION))),\
+			$(OWNER)/$(NAME):$(tag))
+
+
 docker.test: test.docker
+
+
+# Load Docker images from a tarball file.
+#
+# Usage:
+#	make docker.untar [from-file=(.cache/image.tar|<file-path>)]
+
+docker.untar:
+	docker load -i $(or $(from-file),.cache/image.tar)
 
 
 
@@ -128,13 +159,13 @@ docker.test: test.docker
 #	https://github.com/bats-core/bats-core
 #
 # Usage:
-#	make test.docker [tag=($(VERSION)|<tag>)]
+#	make test.docker [tag=($(VERSION)|<docker-tag>)]
 
 test.docker:
 ifeq ($(wildcard node_modules/.bin/bats),)
 	@make npm.install
 endif
-	IMAGE=instrumentisto/$(NAME):$(if $(call eq,$(tag),),$(VERSION),$(tag)) \
+	IMAGE=$(OWNER)/$(NAME):$(or $(tag),$(VERSION)) \
 	node_modules/.bin/bats \
 		--timing $(if $(call eq,$(CI),),--pretty,--formatter tap) \
 		tests/main.bats
@@ -172,7 +203,7 @@ endif
 # Usage:
 #	make git.release [ver=($(VERSION)|<proj-ver>)]
 
-git-release-tag = $(strip $(if $(call eq,$(ver),),$(VERSION),$(ver)))
+git-release-tag = $(strip $(or $(ver),$(VERSION)))
 
 git.release:
 ifeq ($(shell git rev-parse $(git-release-tag) >/dev/null 2>&1 && echo "ok"),ok)
@@ -189,7 +220,8 @@ endif
 ##################
 
 .PHONY: image push release tags test \
-        docker.image docker.push docker.tags docker.test \
+        docker.image docker.push docker.tags docker.tar docker.test \
+        docker.untar \
         git.release \
         npm.install \
         test.docker

@@ -1,5 +1,5 @@
 #
-# Stage 'dist' creates restic distribution.
+# Stage `dist` creates restic distribution.
 #
 
 # https://hub.docker.com/_/golang
@@ -32,14 +32,11 @@ RUN cd /tmp/restic-* \
 
 
 #
-# Stage 'runtime' creates final Docker image to use in runtime.
+# Stage `runtime` creates final Docker image to use in runtime.
 #
 
 # https://hub.docker.com/_/alpine
 FROM alpine:3.16 AS runtime
-
-LABEL org.opencontainers.image.source="\
-    https://github.com/instrumentisto/restic-docker-image"
 
 
 # Install restic runtime dependencies and upgrade existing packages.

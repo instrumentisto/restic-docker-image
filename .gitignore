@@ -1,7 +1,9 @@
 /.idea/
+/.vscode/
 /*.iml
 .DS_Store
 
+/.cache/
 /node_modules/
 /package-lock.json
 /yarn.lock
