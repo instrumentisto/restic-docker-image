@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.13.1-r3] · 2022-08-10
+[0.13.1-r3]: /../../tree/0.13.1-r3
+
+[Diff](/../../compare/0.13.1-r2...0.13.1-r3)
+
+### Security updated
+
+- [Alpine Linux] 3.16.2: <https://github.com/docker-library/official-images/commit/00214788d0150e2bcf2b2f51f786f92addef2478>
+
+
+
+
 ## [0.13.1-r2] · 2022-07-19
 [0.13.1-r2]: /../../tree/0.13.1-r2
 
