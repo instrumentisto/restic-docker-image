@@ -6,6 +6,19 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.14.0-r0] · 2022-08-26
+[0.14.0-r0]: /../../tree/0.14.0-r0
+
+[Diff](/../../compare/0.13.1-r3...0.14.0-r0)
+
+### Upgraded
+
+- [restic] 0.14.0: <https://github.com/restic/restic/releases/tag/v0.14.0>
+- [Go] 1.19: <https://go.dev/doc/go1.19>
+
+
+
+
 ## [0.13.1-r3] · 2022-08-10
 [0.13.1-r3]: /../../tree/0.13.1-r3
 
