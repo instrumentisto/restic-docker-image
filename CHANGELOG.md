@@ -6,6 +6,20 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.14.0-r1] · 2022-12-02
+[0.14.0-r1]: /../../tree/0.14.0-r1
+
+[Diff](/../../compare/0.14.0-r0...0.14.0-r1)
+
+### Upgraded
+
+- [Alpine Linux] 3.17: <https://www.alpinelinux.org/posts/Alpine-3.17.0-released.html> ([#12])
+
+[#12]: /../../issues/12
+
+
+
+
 ## [0.14.0-r0] · 2022-08-26
 [0.14.0-r0]: /../../tree/0.14.0-r0
 
