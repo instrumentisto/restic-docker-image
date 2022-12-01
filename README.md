@@ -86,31 +86,31 @@ docker run --rm -v $(pwd):/data \
 
 ## Image versions
 
-This image is based on the popular [Alpine Linux project][1], available in [the alpine official image][2]. Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
+This image is based on the popular [Alpine Linux project][1], available in [the alpine official image][2]. [Alpine Linux][1] is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc][4] instead of [glibc and friends][5], so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread][6] for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-
-### `X`
-
-Latest tag of `X` restic's major version.
+This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc][4] instead of [glibc and friends][5], so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread][6] for more discussion of the issues that might arise and some pro/con comparisons of using [Alpine][1]-based images.
 
 
-### `X.Y`
+### `<X>`
 
-Latest tag of `X.Y` restic's minor version.
-
-
-### `X.Y.Z`
-
-Latest tag of a concrete `X.Y.Z` version of restic.
+Latest tag of the latest major `X` restic version.
 
 
-### `X.Y.Z-rN`
+### `<X.Y>`
 
-Concrete `N` image revision tag of a restic's concrete `X.Y.Z` version.
+Latest tag of the latest minor `X.Y` restic version.
 
-Once build, it's never updated.
+
+### `<X.Y.Z>`
+
+Latest tag of the concrete `X.Y.Z` restic version.
+
+
+### `<X.Y.Z>-r<N>`
+
+Concrete `N` image revision tag of the concrete `X.Y.Z` restic version.
+
+Once built, it's never updated.
 
 
 
@@ -133,7 +133,6 @@ The [sources][92] for producing `instrumentisto/restic` Docker images are licens
 We can't notice comments in the [DockerHub] (or other container registries) so don't use them for reporting issue or asking question.
 
 If you have any problems with or questions about this image, please contact us through a [GitHub issue][90].
-
 
 
 

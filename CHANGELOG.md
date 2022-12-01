@@ -271,7 +271,6 @@ See [GitHub releases](/../../releases).
 
 
 
-
 [Alpine Linux]: https://www.alpinelinux.org
 [Go]: https://go.dev
 [restic]: https://restic.net
