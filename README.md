@@ -69,7 +69,7 @@ docker run --rm -v $(pwd):/data \
 
 First, generate `rclone` config file:
 ```bash
-docker run --rm -v rclone-config:/config/rclone rclone/rclone config
+docker run --rm -it -v rclone-config:/config/rclone rclone/rclone config
 ```
 
 Then, mount it a volume:
