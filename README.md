@@ -31,15 +31,15 @@ restic is a program that does backups right and was designed with the following 
 - __Efficient:__ With the growth of data, additional snapshots should only take the storage of the actual increment. Even more, duplicate data should be de-duplicated before it is actually written to the storage back end to save precious backup space.
 
 restic supports the following backends for storing backups natively:
-- [Local directory](https://restic.readthedocs.io/en/latest/manual.html#local)
-- [sftp server (via SSH)](https://restic.readthedocs.io/en/latest/manual.html#sftp)
-- [HTTP REST server](https://restic.readthedocs.io/en/latest/manual.html#rest-server) ([protocol](https://github.com/restic/restic/blob/master/doc/rest_backend.rst), [rest-server](https://github.com/restic/rest-server))
-- [AWS S3](https://restic.readthedocs.io/en/latest/manual.html#amazon-s3) (either from Amazon or using the [Minio](https://minio.io) server)
-- [OpenStack Swift](https://restic.readthedocs.io/en/latest/manual.html#openstack-swift)
-- [BackBlaze B2](https://restic.readthedocs.io/en/latest/manual.html#backblaze-b2)
-- [Microsoft Azure Blob Storage](https://restic.readthedocs.io/en/latest/manual.html#microsoft-azure-blob-storage)
-- [Google Cloud Storage](https://restic.readthedocs.io/en/latest/manual.html#google-cloud-storage)
-- And many other services via the [rclone](https://rclone.org) [Backend](https://restic.readthedocs.io/en/latest/030_preparing_a_new_repo.html#other-services-via-rclone)
+- [Local directory](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#local)
+- [sftp server (via SSH)](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#sftp)
+- [HTTP REST server](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#rest-server) ([protocol](https://github.com/restic/restic/blob/master/doc/REST_backend.rst), [rest-server](https://github.com/restic/rest-server))
+- [AWS S3](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#amazon-s3) (either from Amazon or using the [Minio](https://minio.io) server)
+- [OpenStack Swift](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#openstack-swift)
+- [BackBlaze B2](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#backblaze-b2)
+- [Microsoft Azure Blob Storage](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#microsoft-azure-blob-storage)
+- [Google Cloud Storage](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#google-cloud-storage)
+- And many other services via the [rclone](https://rclone.org) [Backend](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html#other-services-via-rclone)
 
 > [restic.net](https://restic.net)
 
