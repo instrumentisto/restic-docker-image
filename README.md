@@ -16,7 +16,7 @@ restic Docker Image
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`0.15.0-r0`, `0.15.0`, `0.15`, `latest`][201]
+- [`0.15.1-r0`, `0.15.1`, `0.15`, `latest`][201]
 
 
 
@@ -84,7 +84,7 @@ docker run --rm -v $(pwd):/data \
 
 
 
-## Image versions
+## Image tags
 
 This image is based on the popular [Alpine Linux project][1], available in [the alpine official image][2]. [Alpine Linux][1] is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
