@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.15.2-r0] · 2023-03-31
+[0.15.2-r0]: /../../tree/0.15.2-r0
+
+[Diff](/../../compare/0.15.1-r2...0.15.2-r0)
+
+### Upgraded
+
+- [restic] 0.15.2: <https://github.com/restic/restic/releases/tag/v0.15.2>
+
+
+
+
 ## [0.15.1-r2] · 2023-03-31
 [0.15.1-r2]: /../../tree/0.15.1-r2
 
