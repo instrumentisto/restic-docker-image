@@ -6,6 +6,19 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.15.2-r1] · 2023-05-17
+[0.15.2-r1]: /../../tree/0.15.2-r1
+
+[Diff](/../../compare/0.15.2-r0...0.15.2-r1)
+
+### Upgraded
+
+- [Alpine Linux] 3.18: <https://www.alpinelinux.org/posts/Alpine-3.18.0-released.html>
+- [Go] 1.20: <https://go.dev/doc/go1.20>
+
+
+
+
 ## [0.15.2-r0] · 2023-03-31
 [0.15.2-r0]: /../../tree/0.15.2-r0
 
