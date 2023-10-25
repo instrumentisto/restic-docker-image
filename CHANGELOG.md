@@ -14,6 +14,7 @@ All user visible changes to this project will be documented in this file. This p
 ### Upgraded
 
 - [restic] 0.16.1: <https://github.com/restic/restic/releases/tag/v0.16.1>
+- [Go] 1.21: <https://go.dev/doc/go1.21>
 
 
 

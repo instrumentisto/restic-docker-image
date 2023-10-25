@@ -3,7 +3,7 @@
 #
 
 # https://hub.docker.com/_/golang
-FROM golang:1.20-alpine3.18 AS dist
+FROM golang:1.21-alpine3.18 AS dist
 
 ARG restic_ver=0.16.1
 ARG build_rev=0
