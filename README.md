@@ -16,7 +16,7 @@ restic Docker Image
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`0.16.2-r0`, `0.16.2`, `0.16`, `latest`][201]
+- [`0.16.2-r1`, `0.16.2`, `0.16`, `latest`][201]
 
 
 
