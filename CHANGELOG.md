@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.17.3-r1] · 2024-12-11
+[0.17.3-r1]: /../../tree/0.17.3-r1
+
+[Diff](/../../compare/0.17.3-r0...0.17.3-r1)
+
+### Upgraded
+
+- [Alpine Linux] 3.21: <https://www.alpinelinux.org/posts/Alpine-3.21.0-released.html>
+
+
+
+
 ## [0.17.3-r0] · 2024-11-11
 [0.17.3-r0]: /../../tree/0.17.3-r0
 
