@@ -6,7 +6,7 @@
 FROM golang:1.22-alpine3.21 AS dist
 
 ARG restic_ver=0.17.3
-ARG build_rev=2
+ARG build_rev=3
 
 
 # Install build tools.
