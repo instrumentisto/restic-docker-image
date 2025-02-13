@@ -2,7 +2,7 @@ restic Docker Image
 ===================
 
 [![Release](https://img.shields.io/github/v/release/instrumentisto/restic-docker-image "Release")](https://github.com/instrumentisto/restic-docker-image/releases)
-[![CI](https://github.com/instrumentisto/restic-docker-image/workflows/CI/badge.svg?branch=main "CI")](https://github.com/instrumentisto/restic-docker-image/actions?query=workflow%3ACI+branch%3Amain)
+[![CI](https://github.com/instrumentisto/restic-docker-image/actions/workflows/ci.yml/badge.svg?branch=main "CI")](https://github.com/instrumentisto/restic-docker-image/actions?query=workflow%3ACI+branch%3Amain)
 [![Docker Hub](https://img.shields.io/docker/pulls/instrumentisto/restic?label=Docker%20Hub%20pulls "Docker Hub pulls")](https://hub.docker.com/r/instrumentisto/restic)
 
 [Docker Hub](https://hub.docker.com/r/instrumentisto/restic)
@@ -16,7 +16,7 @@ restic Docker Image
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`0.17.3-r3`, `0.17.3`, `0.17`, `latest`][201]
+- [`0.17.3-r4`, `0.17.3`, `0.17`, `latest`][201]
 
 
 

@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.17.3-r4] · 2025-02-13
+[0.17.3-r4]: /../../tree/0.17.3-r4
+
+[Diff](/../../compare/0.17.3-r3...0.17.3-r4)
+
+### Upgraded
+
+- [Go] 1.24: <https://go.dev/doc/go1.24>
+
+
+
+
 ## [0.17.3-r3] · 2025-01-09
 [0.17.3-r3]: /../../tree/0.17.3-r3
 
