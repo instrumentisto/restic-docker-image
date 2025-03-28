@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.18.0-r0] · 2025-03-28
+[0.18.0-r0]: /../../tree/0.18.0-r0
+
+[Diff](/../../compare/0.17.3-r5...0.18.0-r0)
+
+### Upgraded
+
+- [restic] 0.18.0: <https://github.com/restic/restic/releases/tag/v0.18.0>
+
+
+
+
 ## [0.17.3-r5] · 2025-02-17
 [0.17.3-r5]: /../../tree/0.17.3-r5
 
