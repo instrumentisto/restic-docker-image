@@ -3,10 +3,10 @@
 #
 
 # https://hub.docker.com/_/golang
-FROM golang:1.24-alpine3.21 AS dist
+FROM golang:1.24-alpine3.22 AS dist
 
 ARG restic_ver=0.18.0
-ARG build_rev=0
+ARG build_rev=1
 
 
 # Install build tools.
@@ -36,7 +36,7 @@ RUN cd /tmp/restic-* \
 #
 
 # https://hub.docker.com/_/alpine
-FROM alpine:3.21 AS runtime
+FROM alpine:3.22 AS runtime
 
 
 # Install restic runtime dependencies and upgrade existing packages.
