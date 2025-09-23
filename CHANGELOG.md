@@ -6,6 +6,17 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## main
+
+[Diff](/../../compare/0.18.0-r2...main)
+
+### Upgraded
+
+- [Go] 1.25: <https://go.dev/doc/go1.25>
+
+
+
+
 ## [0.18.0-r2] · 2025-07-16
 [0.18.0-r2]: /../../tree/0.18.0-r2
 
