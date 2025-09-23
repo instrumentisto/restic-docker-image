@@ -6,12 +6,14 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
-## main
+## [0.18.1-r0] · 2025-09-23
+[0.18.1-r0]: /../../tree/0.18.1-r0
 
-[Diff](/../../compare/0.18.0-r2...main)
+[Diff](/../../compare/0.18.0-r2...0.18.1-r0)
 
 ### Upgraded
 
+- [restic] 0.18.1: <https://github.com/restic/restic/releases/tag/v0.18.1>
 - [Go] 1.25: <https://go.dev/doc/go1.25>
 
 
