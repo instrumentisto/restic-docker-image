@@ -6,6 +6,18 @@ All user visible changes to this project will be documented in this file. This p
 
 
 
+## [0.18.1-r3] · 2025-12-18
+[0.18.1-r3]: /../../tree/0.18.1-r3
+
+[Diff](/../../compare/0.18.1-r2...0.18.1-r3)
+
+### Security updated
+
+- [Alpine Linux] 3.23.2: <https://github.com/docker-library/official-images/commit/3159434b3c3d42e64dcbc7364d0031abe92210a3>
+
+
+
+
 ## [0.18.1-r2] · 2025-12-04
 [0.18.1-r2]: /../../tree/0.18.1-r2
 
