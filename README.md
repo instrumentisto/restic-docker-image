@@ -14,6 +14,15 @@ restic Docker Image
 
 
 
+## Status
+
+__PROJECT IS CLOSED AND ARCHIVED. NO MAINTAINING WILL BE CONTINUED.__
+
+Consider to use [official `restic/restic` Docker image](https://hub.docker.com/r/restic/restic) instead ([source repo](https://github.com/restic/restic/tree/master/docker)).
+
+
+
+
 ## Supported tags and respective `Dockerfile` links
 
 - [`0.18.1-r4`, `0.18.0`, `0.18`, `latest`][201]
